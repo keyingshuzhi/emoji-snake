@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>表情蛇 · 区域事件乱斗</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">🐍</div>
+        <div class="title">
+          <div class="h1">表情蛇 · 区域事件乱斗</div>
+          <div class="sub">WASD/方向键移动｜E加速(消耗长度)｜1/2/3长按预览松手释放｜Z/X/C或Shift+1/2/3丢弃｜Space暂停｜M切模式｜R重开｜V静音</div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="btnStart" class="btn primary">开始</button>
+        <button id="btnRestart" class="btn">重开</button>
+        <button id="btnSound" class="btn">🔊 声音：开</button>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="hud">
+        <div class="card">
+          <div class="row">
+            <div class="k">分数</div><div class="v" id="score">0</div>
+          </div>
+          <div class="row">
+            <div class="k">最高</div><div class="v" id="high">0</div>
+          </div>
+          <div class="row">
+            <div class="k">速度</div><div class="v" id="spd">1.00x</div>
+          </div>
+          <div class="row">
+            <div class="k">模式</div><div class="v" id="mode">穿墙</div>
+          </div>
+          <div class="row">
+            <div class="k">收集册</div><div class="v" id="album">0/0</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="k2">状态</div>
+          <div class="buff" id="buff">无</div>
+        </div>
+
+        <div class="card">
+          <div class="k2">技能槽（冲刺为体力）</div>
+          <div class="slots">
+            <div class="slot">
+              <div class="emo" id="slot0Emoji">—</div>
+              <div class="meta">
+                <div class="name" id="slot0Name">空</div>
+                <div class="cd"><div class="bar" id="slot0Cd"></div></div>
+              </div>
+              <div class="hint">1 / Z</div>
+            </div>
+            <div class="slot">
+              <div class="emo" id="slot1Emoji">—</div>
+              <div class="meta">
+                <div class="name" id="slot1Name">空</div>
+                <div class="cd"><div class="bar" id="slot1Cd"></div></div>
+              </div>
+              <div class="hint">2 / X</div>
+            </div>
+            <div class="slot">
+              <div class="emo" id="slot2Emoji">—</div>
+              <div class="meta">
+                <div class="name" id="slot2Name">空</div>
+                <div class="cd"><div class="bar" id="slot2Cd"></div></div>
+              </div>
+              <div class="hint">3 / C</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card tips">
+          <div class="k2">表情区域事件</div>
+          <ul>
+            <li>😂 哈哈区：喷 😂 弹幕，撞到会强制摆头 0.2s</li>
+            <li>😢 呜呜区：掉 💧 泪滴，捡到短护盾</li>
+            <li>❓ ???区：掉 🎲 奇遇，随机补技能+小飘</li>
+            <li>😡 暴走区：💢 火花，短冲刺但随机丢技能</li>
+            <li>😴 犯困区：💤 睡泡，肉链更耐久（全场保鲜）</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="stage">
+        <canvas id="c" width="900" height="540"></canvas>
+      </section>
+    </main>
+
+    <div class="mobile-controls">
+      <div class="mobile-left">
+        <div id="joystick" class="joystick">
+          <div id="joystickStick" class="joystick-stick"></div>
+        </div>
+      </div>
+      <div class="mobile-right">
+        <div class="mobile-actions">
+          <button id="btnBoost" class="btn">⚡ 加速</button>
+          <button id="btnSkill0" class="btn skill">—</button>
+          <button id="btnSkill1" class="btn skill">—</button>
+          <button id="btnSkill2" class="btn skill">—</button>
+        </div>
+        <button id="btnPause" class="btn">暂停</button>
+      </div>
+    </div>
+  </div>
+  <div class="rotate-hint" aria-hidden="true">
+    <div class="rotate-card">
+      <div class="rotate-icon">📱↔️</div>
+      <div class="rotate-title">请横屏游玩</div>
+      <div class="rotate-sub">旋转手机，信息栏会完整显示在画面上方</div>
+    </div>
+  </div>
+
+  <script src="./game.js"></script>
+</body>
+</html>

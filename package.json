@@ -1,0 +1,13 @@
+{
+  "name": "emoji-snake-zonewars",
+  "version": "1.0.0",
+  "description": "Emoji Snake - Zone Events (single-player with persistent AI)",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
